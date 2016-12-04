@@ -1,0 +1,33 @@
+{
+  "name": "gur-https-proxy",
+  "version": "1.0.0",
+  "description": "proxy requests to gur rpc service, replacing https requests with http requests",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ur-technology/gur-https-proxy.git"
+  },
+  "main": "build/main.js",
+  "engines": {
+    "node": "4.4.7",
+    "npm": "3.9.5"
+  },
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/tsc --module commonjs --outDir build/ --noImplicitAny --sourceMap --target ES5 lib/*.ts && node build/main.js",
+    "debug": "killall -9 node; ./node_modules/.bin/tsc --module commonjs --outDir build/ --noImplicitAny --sourceMap --target ES5 lib/*.ts && node-debug --web-host=0.0.0.0 build/main.js",
+    "postinstall": "./node_modules/.bin/typings install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-proxy": "^1.16.1",
+    "loglevel": "^1.4.1",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.2",
+    "dotenv": "^2.0.0"
+  },
+  "devDependencies": {
+    "node-inspector": "git://github.com/iamfrontender/node-inspector.git"
+  }
+}
