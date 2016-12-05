@@ -23,9 +23,10 @@ httpProxy.createServer({
     port: 9595
   },
   ssl: {
-    key: fs.readFileSync('server.key', 'utf8'),
-    cert: fs.readFileSync('server.crt', 'utf8')
-  }
+    key: fs.readFileSync('relay.ur.technology.key', 'utf8'),
+    cert: fs.readFileSync('relay.ur.technology.crt', 'utf8')
+  },
+  secure: true
 }).listen(9596);
 
 process.on('SIGTERM', () => {
