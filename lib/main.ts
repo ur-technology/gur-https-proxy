@@ -17,14 +17,21 @@ log.info(`starting with NODE_ENV ${process.env.NODE_ENV}`);
 let fs = require('fs');
 let httpProxy = require('http-proxy');
 
+let bundleFile = 'gurproxy.staging.ur.technology.bundle.crt';
+let keyFile = 'gurproxy.staging.ur.technology.key';
+if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
+  bundleFile = 'gurproxy.ur.technology.bundle.crt';
+  keyFile = 'gurproxy.ur.technology.key';
+}
+
 httpProxy.createServer({
   target: {
     host: 'localhost',
     port: 9595
   },
   ssl: {
-    key: fs.readFileSync('relay.ur.technology.key', 'utf8'),
-    cert: fs.readFileSync('relay.ur.technology.crt', 'utf8')
+    key: fs.readFileSync(keyFile, 'utf8'),
+    cert: fs.readFileSync(bundleFile, 'utf8')
   },
   secure: true
 }).listen(9596);
