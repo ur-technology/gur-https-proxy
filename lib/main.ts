@@ -17,11 +17,11 @@ log.info(`starting with NODE_ENV ${process.env.NODE_ENV}`);
 let fs = require('fs');
 let httpProxy = require('http-proxy');
 
-let bundleFile = 'gurproxy.staging.ur.technology.bundle.crt';
-let keyFile = 'gurproxy.staging.ur.technology.key';
+let bundleFile = 'relay.staging.ur.technology.bundle.crt';
+let keyFile = 'relay.staging.ur.technology.key';
 if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
-  bundleFile = 'gurproxy.ur.technology.bundle.crt';
-  keyFile = 'gurproxy.ur.technology.key';
+  bundleFile = 'relay.ur.technology.bundle.crt';
+  keyFile = 'relay.ur.technology.key';
 }
 
 httpProxy.createServer({
